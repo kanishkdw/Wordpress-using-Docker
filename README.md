@@ -11,12 +11,13 @@ Steps to initialize wordpress using docker
 
         https://github.com/kanishkdw/Wordpress-using-Docker.git
 
-2.Create a folder wordpress-site;
+2.Change the wordpress directory path Wordpress-using-Docker
 
-    mkdir wordpress-site && cd wordpress-site
-    vi wordpress-site
+         cd Wordpress-using-Docker
    
-3.Copy the Build steps to the folder
+   
+3.Open the docker-compose.yml file and update with your actual db user and password values.
+
 
     version: ‘3’
     services:
@@ -26,10 +27,10 @@ Steps to initialize wordpress using docker
       - db_data:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: <your-root-password>
-      MYSQL_DATABASE: <your-database-name>
-      MYSQL_USER: <your-user-name>
-      MYSQL_PASSWORD: <your-user-password>
+      MYSQL_ROOT_PASSWORD: <your-root-password>             #use your actual Mysql root password
+      MYSQL_DATABASE: <your-database-name>                  #use your actual Mysql database name
+      MYSQL_USER: <your-user-name>                          #use your actual Mysql username
+      MYSQL_PASSWORD: <your-user-password>                  #use your actual Mysql user password
   
     wordpress:
     depends_on: db
@@ -40,16 +41,20 @@ Steps to initialize wordpress using docker
     volumes:
       - ./wordpress:/var/www/html/
     environment:
-      WORDPRESS_DB_HOST: db:3306
-      WORDPRESS_DB_USER: <your-db-user>
-      WORDPRESS_DB_PASSWORD: <your-db-password>
-      WORDPRESS_DB_NAME: <your-database-name>
-      volumes:
+      WORDPRESS_DB_HOST: db:3306                    
+      WORDPRESS_DB_USER: <your-db-user>                       #use your Db user
+      WORDPRESS_DB_PASSWORD: <your-db-password>               #use your actual db password
+      WORDPRESS_DB_NAME: <your-database-name>                 #use your actual database name          
+      volumes:     
       db_data:
 
-4.Initialize the docker compose ;   
+4.Initialize the docker compose  
+        
         docker-compose up  
-Once it's done you should be able to access the webpage via http://localhost:8000/wp-admin/index.php on your host machine                     localhost:8000  
+
+Once it's done you should be able to access the webpage via http://localhost:8000/wp-admin/index.php on your host machine  
+
+        localhost:8000  
 
 
 ![Screenshot 2024-07-22 161205](https://github.com/user-attachments/assets/ecc4e346-87c7-4ca9-b6d3-0884a72e121a)
