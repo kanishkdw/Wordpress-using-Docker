@@ -1,26 +1,22 @@
+#  Wordpress-using-Docker  
+
 #  Prerequisites
 I assume you have installed Docker and it is running.  
 See the [Docker website](https://www.docker.com/get-started/#h_installation) for installation instructions.
+Hope you know how to create the folder and edit it.
 
 #  Build
-Steps to initialize wordpress using docker
-1.Clone this repo
+Steps to initialize wordpress using docker    
+1.Clone this repo   
 
-#  Wordpress-using-Docker
+        https://github.com/kanishkdw/Wordpress-using-Docker.git
 
-Initialize the docker using
-
-    systemctl start docker
-
-Firstly create a folder wordpress-site and enter it using;
+2.Create a folder wordpress-site;
 
     mkdir wordpress-site && cd wordpress-site
-
-This will put you in the folder you just created. We are now ready to get our Docker Compose file setup!!
-
-Enter the folder and paste the below code;;
-
     vi wordpress-site
+   
+3.Copy the Build steps to the folder
 
     version: ‘3’
     services:
@@ -51,12 +47,10 @@ Enter the folder and paste the below code;;
       volumes:
       db_data:
 
-Now, all you have to do is run the below command ;
+4.Initialize the docker compose ;   
+        docker-compose up  
+Once it's done you should be able to access the webpage via http://localhost:8000/wp-admin/index.php on your host machine                     localhost:8000  
 
-    docker-compose up
-
-Once it's done visit the--->>>  localhost:8000  
-in your web browser and land on the default Wordpress setup page.
 
 ![Screenshot 2024-07-22 161205](https://github.com/user-attachments/assets/ecc4e346-87c7-4ca9-b6d3-0884a72e121a)
 
